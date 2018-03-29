@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../static/js/jquery.min.js"></script>
+    <style id="stndz-style"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grade Hub</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="../static/css/custom.min.css">
+    <script>
+    $(document).ready(function () {
+    jQuery(document).ready(function($) {
+        $(".table-secondary").click(function() {
+            window.location = $(this).data("href");
+        });
+    });
+});
+</script>
+</head>
+<body style>
+<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" style="">
+      <div class="container">
+          <a href="../" class="navbar-brand">Grade Hub</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../help/">Help</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://blog.bootswatch.com">Blog</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Flatly <span class="caret"></span></a>
+              <div class="dropdown-menu" aria-labelledby="download">
+                <a class="dropdown-item" href="https://jsfiddle.net/bootswatch/jmg3gykg/">Open in JSFiddle</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../static/css/bootstrap.min.css">bootstrap.min.css</a>
+                <a class="dropdown-item" href="../static/css/bootstrap.css">bootstrap.css</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../static/css/_variables.scss">_variables.scss</a>
+                <a class="dropdown-item" href="../static/css/_bootswatch.scss">_bootswatch.scss</a>
+              </div>
+            </li>
+          </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:5000">Hello, {{ name }} </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<div class="container">
+    <div class="page-header">
+        <h1 id="GradeHub" style="padding-bottom: 32px;"> Grade Hub </h1>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Class</th>
+          <th scope="col">Average</th>
+        </tr>
+      </thead>
+      <tbody>
+      for link in g.items():
+  print(link[0])
+  for info in link[1]:
+    print(info)
+
+      {% for link in value.items()  %}
+      <tr data-href="../dashboard/{{link}}" class="table-secondary">
+          {% for info in link[1] %}
+              <th scope="row">{{link[1][0]}}</th>
+              <td>{{info}}</td>
+          {% endfor %}
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+</body>
+</html>
