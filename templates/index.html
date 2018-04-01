@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Grade Hub</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="../static/css/custom.min.css">
 </head>
 <body style>
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" style="">
-      <div class="container">
-          <a href="../" class="navbar-brand">Grade Hub</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
-          <span class="navbar-toggler-icon"></span>
+    <div class="container">
+        <a href="../" class="navbar-brand">Grade Hub</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav">
-          </ul>
+            <ul class="navbar-nav">
+            </ul>
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="../help/">Help</a>
@@ -28,8 +29,8 @@
                 </li>
             </ul>
         </div>
-      </div>
-    </div>  
+    </div>
+</div>
 <div class="container">
     <div class="page-header">
         <h1 id="GradeHub" style="padding-bottom: 32px;"> Grade Hub </h1>
@@ -38,12 +39,14 @@
     <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
         <div class="card-header">Header</div>
         <div class="card-body">
-            <form action = "http://localhost:5000/dashboard" method="POST">
+            <form action="http://localhost:5000/dashboard" method="POST">
                 <fieldset>
                     <div class="form-group">
                         <label for="usrnm">Username (Lunch ID)</label>
                         <input name="usrnm" type="text" class="form-control" id="usrnm" placeholder="Username">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your username/password with anyone else.</small>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your username/password with
+                            anyone else.
+                        </small>
                     </div>
                     <div class="form-group">
                         <label for="pswrd">Password</label>
