@@ -31,9 +31,8 @@ async def info(content):
     d = {}
     data = []
     soup = BeautifulSoup(content, "lxml")
-    r = soup.find('table', {"id": "plnMain_rptAssigmnetsByCourse_dgCourseAssignments_0"})
-    firstHeader = soup.find('tr', {"class": "sg-asp-table-data-row"})
-    for tag in [firstHeader] + firstHeader.findNextSiblings():
+    elem = soup.find('tr', {"class": "sg-asp-table-data-row"})
+    for tag in [elem] + elem.findNextSiblings():
         for tr in tag:
             if tr.name == "td":
                 rt = tr.text
@@ -95,6 +94,7 @@ def index():
 @app.route('/')
 @app.route('/dashboard', methods=['POST'])
 def login():
+    print("login")
     global x
     global y
     global cont
@@ -121,7 +121,7 @@ def login():
         if av or sub is not None:
             nsub = sub.replace(" ", "_")
             print(x, sub, av, nsub)
-            g["{0}".format(nsub)] = [sub, av]
+            g["{0}".format(nsub)] = [sub, av, y]
             x += 1
             y += 1
         else:
@@ -141,8 +141,14 @@ def classes(cls):
         if classinfo is not None:
             print(x, classinfo)
             m += 1
-    return render_template("class.html", db=classinfo)
+    return render_template("class.html", name=nme, db=classinfo)
+
+
+@app.route('/help')
+def hlp():
+    print("help")
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
