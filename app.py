@@ -4,11 +4,14 @@ from bs4 import BeautifulSoup
 import asyncio
 import requests
 import re
+
 app = Flask(__name__)
 y = 0
 x = 3
 cont = ""
+d = {}
 g = {}
+e = {}
 err = False
 grd = True
 session_requests = requests.session()
@@ -27,24 +30,29 @@ async def student():
     return nmae
 
 
-async def info(content):
-    d = {}
+async def info(content, z, cls):
     data = []
+    d = {}
     soup = BeautifulSoup(content, "lxml")
-    elem = soup.find('tr', {"class": "sg-asp-table-data-row"})
-    for tag in [elem] + elem.findNextSiblings():
-        for tr in tag:
-            if tr.name == "td":
-                rt = tr.text
+    n = z.get(cls)
+    print(n)
+    tbl = soup.find("table", {"id": "plnMain_rptAssigmnetsByCourse_dgCourseAssignments_%s" % n})
+    for tag in [tbl] + tbl.findChildren('tr'):
+        for td in tag:
+            if td.name == "td":
+                rt = td.text
                 rt = rt.replace("\n", "")
                 rt = rt.replace("\r", "")
                 rt = rt.replace("*", "")
                 rt = rt.rstrip()
                 rt = rt.lstrip()
                 data.append(rt)
-        print(data)
-        d["{0}".format(data[2])] = data
-        data = []
+        try:
+            d["{0}".format(data[2])] = data
+            data = []
+        except IndexError:
+            pass
+    d.pop("Assignment", 0)
     print(d)
     return d
 
@@ -78,6 +86,8 @@ async def subj(content):
             return subject[18:]
         except IndexError:
             pass
+
+
 loop = asyncio.get_event_loop()
 
 
@@ -97,6 +107,7 @@ def login():
     print("login")
     global x
     global y
+    global e
     global cont
     global nme
     text = request.form['usrnm']
@@ -120,8 +131,10 @@ def login():
         nme = loop.run_until_complete(student())
         if av or sub is not None:
             nsub = sub.replace(" ", "_")
+            nsub = sub.replace("/", "_")
             print(x, sub, av, nsub)
             g["{0}".format(nsub)] = [sub, av, y]
+            e["{0}".format(nsub)] = y
             x += 1
             y += 1
         else:
@@ -133,13 +146,13 @@ def login():
 
 @app.route('/dashboard/<cls>')
 def classes(cls):
-    print(cls)
+    global e
     global cont
+    print(cls)
     print("classes")
-    classinfo = loop.run_until_complete(info(cont))
+    classinfo = loop.run_until_complete(info(cont, e, cls))
     for m in range(10):
         if classinfo is not None:
-            print(x, classinfo)
             m += 1
     return render_template("class.html", name=nme, db=classinfo)
 
@@ -147,8 +160,8 @@ def classes(cls):
 @app.route('/help')
 def hlp():
     print("help")
+    return render_template("help.html")
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
