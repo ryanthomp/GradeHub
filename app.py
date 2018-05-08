@@ -16,7 +16,7 @@ grd = True
 err = False
 cache = SimpleCache()
 session_requests = requests.session()
-app.secret_key = '\x94\x1d\x94\x83@q\xd0\x14\x0f)\xa4\xab\x17\xcdS\xee\x0fb\x17\x85\x8c\xbb\xc6t'
+app.secret_key = 'secret'
 ansi_escape = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 url = 'https://hac.fultonschools.org/HomeAccess/Content/Student/Assignments.aspx'
 login_url = 'https://hac.fultonschools.org/HomeAccess/Account/LogOn?ReturnUrl=%2fhomeaccess'
