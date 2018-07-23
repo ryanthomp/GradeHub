@@ -21,6 +21,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Authors
 
 * **Ryan Thompson** - *Overall Design and Build of project* - [ryanthomp](https://github.com/ryanthomp)
+* **Chris Lavine** - *Mobile integration and PWA developement* 
 
 ## License
 
