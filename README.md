@@ -6,6 +6,18 @@ A rewrite of my school district's online grade viewer.
 
 *Coming Soon*
 
+## In developement
+
+* Expanding for use with all SunGuard based HAC sites
+* "Remeber Me" on login
+* (Distant Future) A better and FREE IOS app
+* (Even more distant future) Grade Tracking and Statistics
+
+## Know issues
+
+* General runtime issues and reliablity
+* Closing the site does not logout therefore not clearing session data
+
 ## Built With
 
 * [Pycharm](https://www.jetbrains.com/pycharm/) - Python IDE
