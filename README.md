@@ -9,6 +9,7 @@ A rewrite of my school district's online grade viewer.
 ## In developement
 
 * Expanding for use with all SunGuard based HAC sites
+* Attendance view
 * "Remeber Me" on login
 * (Distant Future) A better and FREE IOS app
 * (Even more distant future) Grade Tracking and Statistics
