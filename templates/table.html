@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="../static/js/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style id="stndz-style"></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Grade Hub</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="../static/css/custom.min.css">
-    <script type="text/javascript" src="../static/js/custom.js"></script>
-    <script>
-        $(document).ready(function () {
-            jQuery(document).ready(function ($) {
-                $(".table-info").click(function () {
-                    window.location = $(this).data("href");
-                });
-                $(".table-warning").click(function () {
-                    window.location = $(this).data("href");
-                });
-                $(".table-danger").click(function () {
-                    window.location = $(this).data("href");
-                });
-                $(".table-success").click(function () {
-                    window.location = $(this).data("href");
-                });
-                $(".alert-info").click(function () {
-                    window.location = $(this).data("href");
-                });
-            });
-        });
+    <link rel="stylesheet" href="/static/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="/static/css/custom.min.css">
+    <script type="text/javascript" src="/static/js/custom.js"></script>
     </script>
 </head>
 <body style>
@@ -47,9 +27,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/help">Help</a>
                 </li>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/ryanthomp/GradeHub" target="_blank">View on GitHub</a>
+                    <a class="nav-link" >Welcome, {{name}}</a>
                 </li>
+            </ul>
+        </div>
             </ul>
         </div>
     </div>
@@ -58,9 +42,9 @@
     <div class="page-header">
         <h1 id="GradeHub" style="padding-bottom: 32px;"> Grade Hub </h1>
         <div class="alert alert-dismissible alert-danger">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>You must </strong> <a href="/logout" class="alert-link">Logout</a> before closing your tab.
-</div>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>You must </strong> <a href="/logout" class="alert-link">Logout</a> before closing your tab.
+        </div>
     </div>
     <table class="table table-hover">
         <thead>
@@ -71,7 +55,9 @@
         </thead>
         <tbody>
         {% for link in value.items() %}
-        {% if link[1][2] >= 100 or link[1][1] >= 89 %}
+        {% if link[1][1] == None %}
+        <tr data-href="/dashboard/{{link[0]}}" class="table-active">
+            {% elif link[1][2] >= 100 or link[1][1] >= 89 %}
         <tr data-href="/dashboard/{{link[0]}}" class="table-info">
             {% elif link[1][2] >= 88 or link[1][1] >= 79 %}
         <tr data-href="/dashboard/{{link[0]}}" class="table-success">
@@ -91,6 +77,20 @@
     <div class="alert alert-info" data-href="dashboard/tools">
         <h4 class="alert-heading">Tools</h4>
     </div>
+    <footer id="footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Made by <a href="https://github.com/ryanthomp">Ryan Thompson</a></p>
+                <p>Code released under the <a href="https://github.com/ryanthomp/GradeHub/blob/master/LICENSE">MIT
+                    License</a></p>
+                <p>Based on <a href="https://bootswatch.com/flatly/" rel="nofollow">Flatly by Bootswatch</a>. Icons from <a
+                        href="http://fontawesome.io/" rel="nofollow">Font Awesome</a>. Web fonts from <a
+                        href="https://fonts.google.com/"  rel="nofollow">Google</a></p>
+            </div>
+        </div>
+
+    </footer>
 </div>
+
 </body>
 </html>
